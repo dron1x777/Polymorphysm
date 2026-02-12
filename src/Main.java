@@ -1,13 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        Vehicle[] vehicles = {
-                new Plane("planer", 700.5),
-                new Car("LEXUS", 250),
-                new Boat("SUBMARINE", 74.3),
+        BankAccount[] bankAccounts ={
+                new CheckingAccount("Shama", 350000),
+                new PremiumAccount("Alish", 180000),
+                new SavingsAccount("Aziret", 250000),
         };
-        TrafficController trafficController = new TrafficController();
-        trafficController.startJourney(vehicles);
-        trafficController.stopAll(vehicles);
-        trafficController.testVehicle(vehicles[1]);
+        Bank bank = new Bank();
+        bank.getTotalBalance(bankAccounts);
+        bank.closeAccountsWithLowBalance(bankAccounts,300000);
+        bank.collectMonthlyFees(bankAccounts);
+
     }
 }
