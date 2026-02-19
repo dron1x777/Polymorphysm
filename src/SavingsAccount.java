@@ -1,21 +1,27 @@
-public class SavingsAccount extends BankAccount {
-
-    public SavingsAccount(String ownerName, double balance) {
-        super(ownerName, balance);
-    }
-    @Override
-    public void withdraw(double amount) {
-        if (amount < 50000 && amount <= getBalance()) {
-            setBalance(getBalance() - amount);
-        } else if (amount < 50000 ) {
-            System.out.println("Нельзя снять больше 50000!");
-        }
-    }
-    @Override
-    void deposit(double amount) {
-        if (amount > 0 ) {
-            setBalance(getBalance() + amount);
-        }
+public class SavingsAccount implements Accountable {
+    private double balance;
+    public SavingsAccount(double balance) {
+        this.balance = balance;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public void deposit(double amount) {
+        this.balance += amount;
+    }
+
+    @Override
+    public Double getBalance() {
+        return balance;
+    }
+
+    @Override
+    public void showInfo() {
+        System.out.println("Savings account");
+        System.out.println("Balance: " + balance);
+        System.out.println();
+    }
 }
